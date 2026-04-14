@@ -70,7 +70,7 @@ if(!pushed_operator){
            display.value = result;  
       }else{
            firstnumber =display_value;
-           display.value = display_value;   
+           display.value = display_value;
            return;
       }        
   }else{
@@ -83,4 +83,46 @@ if(!pushed_operator){
 lastinput ="equal"
 pushed_number =false;
 pushed_operator =false;
+};
+//ドットの挙動
+const input_dot = () =>{
+ display_value = display.value;
+  if(lastinput === "number"){
+      if(display_value.includes(".")){
+         return;
+        }else{
+         display_value +=".";
+        };
+    }else{display_value ="0.";
+    };
+display.value = display_value;
+pushed_number =true;
+};
+
+//+/-の挙動
+const change_click = () =>{
+display_value =display.value*-1;
+display.value = display_value;
+}
+//%の挙動
+const calc_parcent = (c,d,ope) => {
+    c=Number(firstnumber);
+    d=Number(secondnumber);
+if(ope ==="+" || ope ==="-"){return c*d/100;}
+if(ope ==="×" || ope ==="÷"){return d/100;}
+}
+
+const percent_click = () =>{
+ display_value =display.value
+ secondnumber =display_value;
+ result =calc_parcent(firstnumber,secondnumber,ope);
+ secondnumber =result;
+ display.value = result;
+
+};
+//ルートの挙動
+const sqrt_click = () =>{
+ display_value =display.value;
+ result =Math.sqrt(display_value);
+ display.value = toString(result);
 };
