@@ -82,3 +82,4 @@ lastinput ="equal";
 pushed_operator =false;
 pushed_number =false;
 };
+//ここまで完成！！16:50
