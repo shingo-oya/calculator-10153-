@@ -63,23 +63,24 @@ const calc_operator = (operator) => {
 //イコールの挙動を考える
 const calc_equal = () => {
     display_value = display.value;
-if(lastinput ==="equal"){
-        firstnumber =display_value;
-        result = calc(firstnumber,secondnumber,ope);
-        display.value = result;
-  };    
-    if(!pushed_operator){
-        firstnumber =display_value;
-        display.value = display_value;
-    }else{
-        secondnumber =display_value;
-        result=calc(firstnumber,secondnumber,ope);
-        firstnumber =result;
-        display.value = result;
-    };
+if(!pushed_operator){
+    if(lastinput ==="equal"){
+           firstnumber =display_value;
+           result = calc(firstnumber,secondnumber,ope);
+           display.value = result;  
+      }else{
+           firstnumber =display_value;
+           display.value = display_value;   
+           return;
+      }        
+  }else{
+    secondnumber =display_value;
+    result=calc(firstnumber,secondnumber,ope);
+    firstnumber =result;
+    display.value = result;
+  };
 
-lastinput ="equal";
-pushed_operator =false;
+lastinput ="equal"
 pushed_number =false;
+pushed_operator =false;
 };
-//ここまで完成！！16:50
