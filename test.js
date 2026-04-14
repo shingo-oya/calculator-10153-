@@ -79,3 +79,4 @@ if(!pushed_operator){
    };
    lastinput ="equal";
 };
+//なんだこれ

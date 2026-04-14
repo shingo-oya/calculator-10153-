@@ -1,0 +1,53 @@
+<html lang="ja">
+<head>
+<title>Calculator</title> 
+<meta charest ="utf-8">
+<link rel="stylesheet" href="calculator3.css">
+</head>
+
+<body>
+<table>
+<tr>
+<form>
+    <td colspan="5">
+<input type="text" name="display" value="0" id="display" maxlength="10" readonly>
+    </td>
+</form>
+</tr>
+    <td><button value="%"name="operator" onclick="percent_click()" >%</td>
+    <td><button value=7 name="number" onclick="inputNumber('7')" >7</td>
+    <td><button value=8 name="number" onclick="inputNumber('8')">8</td>
+    <td><button value=9 name="number" onclick="inputNumber('9')">9</td>
+    <td><button value="/"name="operator" onclick="calc_operator('÷')">÷</td>
+</tr>
+<tr>
+    <td><button value="√"name="operator" onclick="sqrt_click()">√</td>
+    <td><button value=4 name="number" onclick=" inputNumber('4')">4</td>
+    <td><button value=5 name="number" onclick=" inputNumber('5')">5</td>
+    <td><button value=6 name="number" onclick=" inputNumber('6')">6</td>
+    <td><button value="*"name="operator" onclick="calc_operator('×')">×</td>
+ </tr>
+<tr>
+    <td><button value="CE"name="circle-o" onclick="ce_click()">CE</td>
+    <td><button value=1 name="number" onclick=" inputNumber('1')">1</td>
+    <td><button value=2 name="number" onclick=" inputNumber('2')">2</td>
+    <td><button value=3 name="number" onclick=" inputNumber('3')">3</td>
+    <td><button value="-"name="operator" onclick="calc_operator('-')">-</td>
+</tr>
+<tr>
+    <td><button value="C"name="circle-o" onclick="c_click()">C</td>
+    <td><button value=0 name="number" onclick=" inputNumber('0')">0</td>
+    <td><button value="."name="number"onclick ="calc_dot('.')">.</td>
+    <td><button value="+/-"name="number" onclick="change_click()">+/-</td>
+       <td rowspan=2><button value="+"name="plus" onclick="calc_operator('+')">+</td>
+</tr>
+<tr>
+<td><td colspan="3"><button value="="name="equal" onclick="calc_equal()">=</td>
+<td></td>
+</tr>
+
+
+</table>
+<script src="test.js"></script>
+</body>
+
