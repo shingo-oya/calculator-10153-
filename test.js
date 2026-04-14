@@ -12,6 +12,7 @@ let result =""
 //数字の入力
 
 const inputNumber = (num) => {
+   display_value = display.value;
     if (pushed_number === false || display.value ==="0"){
         display_value = num
         }else{
@@ -62,21 +63,22 @@ const calc_operator = (operator) => {
 //イコールの挙動を考える
 const calc_equal = () => {
     display_value = display.value;
-if(!pushed_operator){
-    firstnumber =display_value;
-    display.value = display_value;
-    return;
-  }else{
-    if(lastinput ==="equal"){
+if(lastinput ==="equal"){
         firstnumber =display_value;
-        result =calc(firstnumber,secondnumber,ope);
-      }else{
-        secondnumber =display_value;
         result = calc(firstnumber,secondnumber,ope);
+        display.value = result;
+  };    
+    if(!pushed_operator){
+        firstnumber =display_value;
+        display.value = display_value;
+    }else{
+        secondnumber =display_value;
+        result=calc(firstnumber,secondnumber,ope);
         firstnumber =result;
-      };
-      display.value = result;
-   };
-   lastinput ="equal";
+        display.value = result;
+    };
+
+lastinput ="equal";
+pushed_operator =false;
+pushed_number =false;
 };
-//なんだこれ
