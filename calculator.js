@@ -64,12 +64,12 @@ const calc_operator = (operator) => {
  if(lastinput ==="operator"){
    ope = operator;
    lastinput = "operator";
-   display.value = display.value
+   display.value = display_value
    return;
 };
     if(!pushed_operator){
         firstnumber =display_value
-        display.value = display.value;
+        display.value = display_value;
     }else{
         secondnumber =display_value;
         result =calc_format(firstnumber,secondnumber,ope);
@@ -98,7 +98,7 @@ if(!pushed_operator){
       }else{
         if(ope===""){
            pushed_number = false;
-           display.value = display.value;
+           display.value = display_value;
            lastinput = "";
            return;
           }else{firstnumber =display_value;
