@@ -99,7 +99,7 @@ if(!pushed_operator){
         if(ope===""){
            pushed_number = false;
            display.value = display.value;
-           lastinput = "equal";
+           lastinput = "";
            return;
           }else{firstnumber =display_value;
                 result = calc_format(firstnumber,secondnumber,ope);
