@@ -404,13 +404,10 @@ let NumInt = toBigInt(numStr) * 100000000n;
 //CEの挙動
 const ce_click = () =>{
     display_value = display.value;
-   if(lastinput === "equal" || lastinput === "percent"){
-        if(display_value === "Error"){
-           c_click();
+   if(lastinput === "equal" || lastinput === "percent"){return;};
+   if(display_value === "Error"){
+       c_click();return;
            }else{
-            return;
-           };
-       }else{
     if(ope ==="÷" || ope ==="×" || ope ==="+" || ope ==="-"){
       display_value = "0";
       display.value = display_value;
