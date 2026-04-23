@@ -362,6 +362,7 @@ const percent_click = () =>{
 //ルートの挙動
 const sqrt_click = () =>{
     display_value = isNaN(Number(display.value))? "Error":display.value;
+    if(isNaN(Number(display_value))){return;};
 const numStr = display_value
     const toBigInt =(numStr) =>{
     const [intPart, decimalPart] = numStr.split(".");
