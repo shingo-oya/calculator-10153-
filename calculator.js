@@ -4,6 +4,7 @@ const display = document.getElementById("display");  ;
 let pushed_number  = false;
 let pushed_operator  = false;
 let pushed_change = false;
+let sign_renda = false;
 let lastinput = "number";
 let display_value = "0";
 let ope = ""
@@ -126,19 +127,22 @@ const calc_format = (a,b,ope) =>{
 
 //演算子の処理
 const calc_operator = (operator) => {
- display_value =display.value
+ 
  if(isNaN(Number(display_value))){return};
 
- if(lastinput ==="operator"){
-   ope = operator;
+ if(lastinput ==="CE" || lastinput ==="operator"){
+    ope = operator;
    lastinput = "operator";
    display.value = display_value.replace(/(\.[0-9]*[1-9])0+$/,"$1").replace(/\.0+$/,"").replace(/\.$/,"").replace(/^-0$/,"0")
    return;
    };
+
    if(!pushed_operator){
+    display_value =display.value
         firstnumber =display_value
         display.value = display_value.replace(/(\.[0-9]*[1-9])0+$/,"$1").replace(/\.0+$/,"").replace(/\.$/,"").replace(/^-0$/,"0")
     }else{
+        display_value =display.value
         secondnumber =display_value;
         result =calc_format(firstnumber,secondnumber,ope);
         display.value = result
@@ -160,7 +164,7 @@ const calc_equal = () => {
 if(lastinput === "percent"){return};
 
 if(lastinput === "operator"){
-
+ if(sign_renda === false){
     if(ope==="+" || ope==="-"){
         firstnumber ="0"; 
         secondnumber =display_value;
@@ -170,13 +174,24 @@ if(lastinput === "operator"){
         firstnumber ="1"; 
         secondnumber =display_value;
     }; 
-
-result =calc_format(firstnumber,secondnumber,ope);
+ }else{
+    if(ope === "+" || ope === "-"){
+    firstnumber =secondnumber;
+    secondnumber =display_value;
+    }else if(ope === "×"){
+        secondnumber =display_value;
+    }else if(ope === "÷"){
+        firstnumber ="1";
+        secondnumber =display_value;
+    }
+    };
+ result =calc_format(firstnumber,secondnumber,ope);
     display.value = result;
     firstnumber =result;
     pushed_change = false;
     pushed_number =false;
     pushed_operator =false;
+    sign_renda = true;
     lastinput ="equal";
     return;
 };
@@ -247,15 +262,25 @@ lastinput = "number";
 const change_click = () =>{
     display_value = display.value;
  if(isNaN(Number(display_value))){return;};
-if(lastinput === "operator"){//演算子の直後の場合
+if(lastinput === "root"){
+    if(display_value.includes("-")){//負の場合
+        display_value = display_value.replace("-","");
+          }else{//正の場合
+        display_value = "-" + display_value;
+    } 
+    display.value = display_value;
+    lastinput = "change";
+    return};
+
+ if(lastinput === "operator"){//演算子の直後の場合
 
  if(display_value.includes("-")){//負の場合
     display_value = display_value.replace("-","");
 }else{//正の場合
     display_value = "-" + display_value;
      }
-     display.value = display_value;
    firstnumber = display_value;  
+   display.value = display_value;
    pushed_change = true;
 return;    
 }else{//演算子の直後でない場合
@@ -385,15 +410,13 @@ const ce_click = () =>{
             return;
            };
        }else{
-    if(ope ==="÷"){
-      display.value = "0"
+    if(ope ==="÷" || ope ==="×" || ope ==="+" || ope ==="-"){
+      display_value = "0";
+      display.value = display_value;
       pushed_number = false;
-      lastinput = "operator";
+      lastinput = "CE";
     }else{
-        display_value = "0";
-        display.value = display_value;
-        pushed_number = false;
-        lastinput = "operator";
+       c_click();
     };
     }
 };
@@ -406,6 +429,8 @@ ope = "";
 result = "";
 pushed_number = false;
 pushed_operator = false;
+sign_renda = false;
 lastinput = "number";
 display.value = display_value;
+
 };
